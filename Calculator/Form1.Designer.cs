@@ -79,12 +79,14 @@
             // 
             // textBox2_Process
             // 
+            this.textBox2_Process.BackColor = System.Drawing.Color.White;
             this.textBox2_Process.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2_Process.Font = new System.Drawing.Font("휴먼둥근헤드라인", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox2_Process.Location = new System.Drawing.Point(14, 40);
             this.textBox2_Process.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox2_Process.Multiline = true;
             this.textBox2_Process.Name = "textBox2_Process";
+            this.textBox2_Process.ReadOnly = true;
             this.textBox2_Process.Size = new System.Drawing.Size(175, 52);
             this.textBox2_Process.TabIndex = 46;
             this.textBox2_Process.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -163,12 +165,14 @@
             // 
             // textBox1_Result
             // 
+            this.textBox1_Result.BackColor = System.Drawing.Color.White;
             this.textBox1_Result.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1_Result.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox1_Result.Location = new System.Drawing.Point(14, 119);
             this.textBox1_Result.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1_Result.Multiline = true;
             this.textBox1_Result.Name = "textBox1_Result";
+            this.textBox1_Result.ReadOnly = true;
             this.textBox1_Result.Size = new System.Drawing.Size(175, 52);
             this.textBox1_Result.TabIndex = 39;
             // 
@@ -259,20 +263,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 18);
+            this.label1.Location = new System.Drawing.Point(148, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 15);
             this.label1.TabIndex = 50;
-            this.label1.Text = "연산";
+            this.label1.Text = "입력";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 98);
+            this.label2.Location = new System.Drawing.Point(148, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 15);
             this.label2.TabIndex = 51;
-            this.label2.Text = "결과";
+            this.label2.Text = "출력";
             // 
             // comboBox1
             // 
@@ -281,7 +285,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "표준",
             "프로그래머"});
-            this.comboBox1.Location = new System.Drawing.Point(247, 4);
+            this.comboBox1.Location = new System.Drawing.Point(16, 5);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 52;
@@ -355,7 +359,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Calculator";
-            this.Text = "Calculator";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "표준 계산기";
             this.Load += new System.EventHandler(this.Calculator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

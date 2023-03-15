@@ -12,134 +12,312 @@ namespace Calculator
 {
     public partial class Form2 : Form
     {
+        int first, second, numpad;
+        int save;
+        bool isTwice = false;
+        char op;
+        string binary, binarytransform;
+
         public Form2()
         {
             InitializeComponent();
             comboBox1.SelectedIndex = 1;
-            //checkBox1_CheckedChanged
+            radioButton_dec.Checked = true;
+
+        }
+
+
+        private void PrintJinsu()  // 연산 결과 진수 변환 
+        {
+            label_hex.Text = "";
+            label_dec.Text = "";
+            label_bin.Text = "";
+
+            label_hex.Text += Convert.ToString(Convert.ToString(save, 16)).ToUpper(); ;
+            label_dec.Text += Convert.ToString(Convert.ToString(save, 10));
+            label_bin.Text += Convert.ToString(Convert.ToString(save, 2));
+        }
+
+        private void PrintNumJinsu(int num) // 계산기 텍스트 출력 진수 변환
+        {
+
+            label_hex.Text = Convert.ToString(Convert.ToString(num, 16)).ToUpper(); ;
+            label_dec.Text = Convert.ToString(Convert.ToString(num, 10));
+            label_bin.Text = Convert.ToString(Convert.ToString(num, 2));
+        }
+
+        private void PrintHexaJinsu(string alpha) // 계산기 문자 텍스트 출력 진수 변환
+        {
+            label_hex.Text = "";
+            label_dec.Text = "";
+            label_bin.Text = "";
+            int num_alpha;
+            num_alpha = int.Parse(alpha, System.Globalization.NumberStyles.HexNumber);
+            label_hex.Text += Convert.ToString(Convert.ToString(num_alpha, 16)).ToUpper();;
+            label_dec.Text += Convert.ToString(Convert.ToString(num_alpha, 10));
+            label_bin.Text += Convert.ToString(Convert.ToString(num_alpha, 2));
+
         }
 
         private void btn_1_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "1";
-            label_hex.Text += Convert.ToString(Convert.ToString(1, 16));
-            label_dec.Text += Convert.ToString(Convert.ToString(1, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(1, 2));
+            numpad = 1;
+
+            //switch (binary)
+            //{
+            //    case "hex":
+            //        textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
+            //        PrintNumJinsu(numpad);
+            //        break;
+            //    case "dec":
+            //        textBox2_Process.Text += Convert.ToString(numpad, 10);
+            //        PrintNumJinsu(numpad);
+            //        break;
+            //    case "bin":
+            //        textBox2_Process.Text += Convert.ToString(numpad, 2);
+            //        PrintNumJinsu(numpad);
+            //        break;
+            //}
+
+            if(radioButton_hex.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)); 
+                PrintNumJinsu(int.Parse(textBox2_Process.Text,System.Globalization.NumberStyles.HexNumber));
+            }
+            else if(radioButton_dec.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad, 10);
+                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+            }
+            else if(radioButton_bin.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad,2);
+                binarytransform = Convert.ToString(numpad,2);
+                PrintNumJinsu(int.Parse(binarytransform));
+
+            }
         }
 
         private void btn_2_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "2";
-            label_hex.Text += Convert.ToString(Convert.ToString(2, 16));
-            label_dec.Text += Convert.ToString(Convert.ToString(2, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(2, 2));
+            numpad = 2;
+
+            if (radioButton_hex.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
+                PrintNumJinsu(int.Parse(textBox2_Process.Text,System.Globalization.NumberStyles.HexNumber));
+            }
+            else if (radioButton_dec.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad, 10);
+                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+            }
         }
 
         private void btn_3_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "3";
-            label_hex.Text += Convert.ToString(Convert.ToString(3, 16));
-            label_dec.Text += Convert.ToString(Convert.ToString(3, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(3, 2));
+            numpad = 3;
+
+            if (radioButton_hex.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
+                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+
+            }
+            else if (radioButton_dec.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad, 10);
+                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+            }
         }
 
         private void btn_4_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "4";
-            label_hex.Text += Convert.ToString(Convert.ToString(4, 16));
-            label_dec.Text += Convert.ToString(Convert.ToString(4, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(4, 2));
+            numpad = 4;
+
+            if (radioButton_hex.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
+                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+
+            }
+            else if (radioButton_dec.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad, 10);
+                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+            }
         }
 
         private void btn_5_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "5";
-            label_hex.Text += Convert.ToString(Convert.ToString(5, 16));
-            label_dec.Text += Convert.ToString(Convert.ToString(5, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(5, 2));
+            numpad = 5;
+
+            if (radioButton_hex.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
+                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+
+            }
+            else if (radioButton_dec.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad, 10);
+                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+            }
         }
 
         private void btn_6_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "6";
-            label_hex.Text += Convert.ToString(Convert.ToString(6, 16));
-            label_dec.Text += Convert.ToString(Convert.ToString(6, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(6, 2));
+            numpad = 6;
+
+            if (radioButton_hex.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
+                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+
+            }
+            else if (radioButton_dec.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad, 10);
+                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+            }
         }
 
         private void btn_7_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "7";
-            label_hex.Text += Convert.ToString(Convert.ToString(7, 16));
-            label_dec.Text += Convert.ToString(Convert.ToString(7, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(7, 2));
+            numpad = 7;
+
+            if (radioButton_hex.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
+                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+
+            }
+            else if (radioButton_dec.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad, 10);
+                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+            }
         }
 
         private void btn_8_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "8";
-            label_hex.Text += Convert.ToString(Convert.ToString(8, 16));
-            label_dec.Text += Convert.ToString(Convert.ToString(8, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(8, 2));
+            numpad = 8;
+
+            if (radioButton_hex.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
+                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+
+            }
+            else if (radioButton_dec.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad, 10);
+                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+            }
         }
 
         private void btn_9_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "9";
-            label_hex.Text += Convert.ToString(Convert.ToString(9, 16));
-            label_dec.Text += Convert.ToString(Convert.ToString(9, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(9, 2));
+            numpad = 9;
+
+            if (radioButton_hex.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
+                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+
+            }
+            else if (radioButton_dec.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad, 10);
+                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+            }
         }
 
         private void btn_0_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "0";
-            label_hex.Text += Convert.ToString(Convert.ToString(1, 16));
-            label_dec.Text += Convert.ToString(Convert.ToString(1, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(1, 2));
+            numpad = 0;
+
+            if (radioButton_hex.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
+                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+
+            }
+            else if (radioButton_dec.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad, 10);
+                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+            }
+            else if (radioButton_bin.Checked == true)
+            {
+                textBox2_Process.Text += Convert.ToString(numpad,2);
+                binarytransform = Convert.ToString(numpad, 2);
+                PrintNumJinsu(int.Parse(binarytransform));
+            }
         }
 
         private void btn_dot_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += ".";
+            textBox2_Process.Text += ".";
         }
 
         private void btn_A_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "A";
+            numpad = 0XA;
+
+            textBox2_Process.Text += Convert.ToString(numpad,16).ToUpper();
+            //textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
+            PrintNumJinsu(int.Parse(textBox2_Process.Text,System.Globalization.NumberStyles.HexNumber));
+
+
         }
 
         private void btn_B_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "B";
+            numpad = 0XB;
+
+            textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
+            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
         }
 
         private void btn_C_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "C";
+            numpad = 0XC;
+
+            textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
+            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
         }
 
         private void btn_D_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "D";
+            numpad = 0XD;
+
+            textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
+            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
         }
 
         private void btn_E_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "E";
+            numpad = 0XE;
+
+            textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
+            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
         }
 
         private void btn_F_Click(object sender, EventArgs e)
         {
-            textBox1_Result.Text += "F";
+            numpad = 0XF;
+
+            textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
+            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
         }
 
         private void btn_del_Click(object sender, EventArgs e)
         {
-            if (textBox1_Result.Text.Length > 0)
+            if (textBox2_Process.Text.Length > 0)
             {
-                Convert.ToString(textBox1_Result.Text).EndsWith(" ");
-                textBox1_Result.Text = textBox1_Result.Text.Substring(0, textBox1_Result.Text.Length - 1);
+                Convert.ToString(textBox2_Process.Text).EndsWith(" ");
+                textBox2_Process.Text = textBox2_Process.Text.Substring(0, textBox2_Process.Text.Length - 1);
             }
             else
                 return;
@@ -147,107 +325,353 @@ namespace Calculator
 
         private void btn_plus_Click(object sender, EventArgs e)
         {
+           
+                    if (isTwice == true)
+                    {
+                        if (textBox2_Process.Text == "")
+                        {
+                            first = save;
+                            textBox2_Process.Text = "";
+                            isTwice = true;
+                        }
 
+                        else if (op != '+')          // N + N ? N 사칙연산
+                        {
+
+                            if (op == '-')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first -= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '*')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first *= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first /= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                        }
+
+                        else   // N + N + N 덧샘
+                        {
+                            second = Convert.ToInt16(textBox2_Process.Text)
+                                ;
+                            textBox2_Process.Text += "";
+                            save = (first += second);
+                            switch(binary)
+                            {
+                                case "hexa":
+                                    textBox1_Result.Text = Convert.ToString(save, 16);
+                                    PrintNumJinsu(int.Parse(textBox1_Result.Text, System.Globalization.NumberStyles.HexNumber));
+                                    break;
+                                case "dec":
+                                    textBox1_Result.Text = Convert.ToString(save);
+                                    PrintNumJinsu(save);
+                                    break;
+                                case "bin":
+                                    break;
+
+                            }
+                            isTwice = true;
+                        }
+                    }
+
+                    else    // N + N  =
+                    {
+                        first = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text = "";
+                        isTwice = true;
+                    }
+
+                    textBox2_Process.Text = "";
+                    op = '+';
         }
 
         private void btn_minus_Click(object sender, EventArgs e)
         {
+            if (isTwice == true)
+            {
+                if (textBox2_Process.Text == "")
+                {
+                    first = save;
+                    textBox2_Process.Text = "";
+                    isTwice = true;
+                }
 
+                else if (op != '-')
+                {
+                    if (op == '+')
+                    {
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first += second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        isTwice = true;
+                    }
+
+                    else if (op == '*')
+                    {
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first *= second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        isTwice = true;
+                    }
+                    else
+                    {
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first /= second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        isTwice = true;
+                    }
+                }
+
+                else
+                {
+                    second = Convert.ToInt16(textBox2_Process.Text);
+                    textBox2_Process.Text += "";
+                    save = (first -= second);
+                    textBox1_Result.Text = Convert.ToString(save);
+                    isTwice = true;
+                }
+            }
+
+            else
+            {
+                first = Convert.ToInt16(textBox2_Process.Text);
+                textBox2_Process.Text = "";
+                isTwice = true;
+            }
+
+            textBox2_Process.Text = "";
+            op = '-';
         }
 
         private void btn_multiple_Click(object sender, EventArgs e)
         {
+            if (isTwice == true)
+            {
+                if (textBox2_Process.Text == "")
+                {
+                    first = save;
+                    textBox2_Process.Text = "";
+                    isTwice = true;
+                }
 
+                else if (op != '*')
+                {
+                    if (op == '+')
+                    {
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first += second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        isTwice = true;
+                    }
+                    else if (op == '-')
+                    {
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first -= second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        isTwice = true;
+                    }
+
+                    else
+                    {
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first /= second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        isTwice = true;
+                    }
+                }
+
+                else
+                {
+                    second = Convert.ToInt16(textBox2_Process.Text);
+                    textBox2_Process.Text += "";
+                    save = (first *= second);
+                    textBox1_Result.Text = Convert.ToString(save);
+                    isTwice = true;
+                }
+            }
+
+            else
+            {
+                first = Convert.ToInt16(textBox2_Process.Text);
+                textBox2_Process.Text = "";
+                isTwice = true;
+            }
+
+            textBox2_Process.Text = "";
+            op = '*';
         }
 
         private void btn_divide_Click(object sender, EventArgs e)
         {
+            if (isTwice == true)
+            {
+                if (textBox2_Process.Text == "")
+                {
+                    first = save;
+                    textBox2_Process.Text = "";
+                    isTwice = true;
+                }
 
+                else if (op != '/')
+                {
+                    if (op == '+')
+                    {
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first += second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        isTwice = true;
+                    }
+                    else if (op == '-')
+                    {
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first -= second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        isTwice = true;
+                    }
+
+                    else
+                    {
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first *= second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        isTwice = true;
+                    }
+                }
+
+                else
+                {
+                    second = Convert.ToInt16(textBox2_Process.Text);
+                    textBox2_Process.Text += "";
+                    save = (first /= second);
+                    textBox1_Result.Text = Convert.ToString(save);
+                    isTwice = true;
+                }
+            }
+
+            else
+            {
+                first = Convert.ToInt16(textBox2_Process.Text);
+                textBox2_Process.Text = "";
+                isTwice = true;
+            }
+
+            textBox2_Process.Text = "";
+            op = '/';
         }
 
         private void btn_result_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBox2_Dec.Enabled = false;
-            checkBox3_Bin.Enabled = false;
-
-            btn_dot.Enabled = false;
-
-            
-            if (checkBox1_Hex.Checked == false) 
+            if (textBox2_Process.Text == "")
             {
-                checkBox2_Dec.Enabled = true;
-                checkBox3_Bin.Enabled = true;
+                switch (op)
+                {
+                    case '+':
+                        save += second;
+                        textBox1_Result.Text = Convert.ToString(save);
+                        PrintNumJinsu(save);
 
-                btn_dot.Enabled = true;
+                        break;
+                    case '-':
+                        save -= second;
+                        textBox1_Result.Text = Convert.ToString(save);
+                        PrintNumJinsu(save);
+                        break;
+                    case '*':
+                        save *= second;
+                        textBox1_Result.Text = Convert.ToString(save);
+                        PrintNumJinsu(save);
+                        break;
+                    case '/':
+                        save /= second;
+                        textBox1_Result.Text = Convert.ToString(save);
+                        PrintNumJinsu(save);
+                        break;
+                }
+            }
+
+            else
+            {
+                second = Convert.ToInt16(textBox2_Process.Text);
+                switch (op)
+                {
+                    case '+':
+                        textBox2_Process.Text = "";
+                        save = (first + second);  // save = (first += second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        PrintNumJinsu(save);
+                        break;
+
+                    case '-':
+                        textBox2_Process.Text = "";
+                        save = (first - second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        PrintNumJinsu(save);
+                        break;
+                    case '*':
+                        textBox2_Process.Text = "";
+                        save = (first * second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        PrintNumJinsu(save);
+                        break;
+                    case '/':
+                        textBox2_Process.Text = "";
+                        save = (first / second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        PrintNumJinsu(save);
+                        break;
+                }
             }
         }
 
-        private void checkBox2_Dec_CheckedChanged(object sender, EventArgs e)
+
+
+        private void btn_clear_Click(object sender, EventArgs e)
         {
-            checkBox1_Hex.Enabled = false;
-            checkBox3_Bin.Enabled = false;
+            textBox1_Result.Text = "";
+            textBox2_Process.Text = "";
+            first = 0;
+            second = 0;
+            save = 0;
+            isTwice = false;
 
-            btn_A.Enabled = false;
-            btn_B.Enabled = false;
-            btn_C.Enabled = false;
-            btn_D.Enabled = false;
-            btn_E.Enabled = false;
-            btn_F.Enabled = false;
-            btn_dot.Enabled = false;
-            if (checkBox2_Dec.Checked == false)
-            {
-                checkBox1_Hex.Enabled = true;
-                checkBox3_Bin.Enabled = true;
-
-                btn_A.Enabled = true;
-                btn_B.Enabled = true;
-                btn_C.Enabled = true;
-                btn_D.Enabled = true;
-                btn_E.Enabled = true;
-                btn_F.Enabled = true;
-                btn_dot.Enabled = true;
-            }
+            label_hex.Text = "";
+            label_dec.Text = "";
+            label_bin.Text = "";
         }
 
-        private void checkBox3_Bin_CheckedChanged(object sender, EventArgs e)
+        private void radioButton_hex_CheckedChanged(object sender, EventArgs e) // 16진수 활성화
         {
-            checkBox1_Hex.Enabled = false;
-            checkBox2_Dec.Enabled = false;
-
-            btn_A.Enabled = false;
-            btn_B.Enabled = false;
-            btn_C.Enabled = false;
-            btn_D.Enabled = false;
-            btn_E.Enabled = false;
-            btn_F.Enabled = false;
-            btn_dot.Enabled = false;
-
-            btn_2.Enabled = false;
-            btn_3.Enabled = false;
-            btn_4.Enabled = false;
-            btn_5.Enabled = false;
-            btn_6.Enabled = false;
-            btn_7.Enabled = false;
-            btn_8.Enabled = false;
-            btn_9.Enabled = false;
-            if (checkBox3_Bin.Checked == false)
+            if (radioButton_hex.Checked == true)
             {
-                checkBox1_Hex.Enabled = true;
-                checkBox2_Dec.Enabled = true;
-
-                btn_A.Enabled = true;
-                btn_B.Enabled = true;
-                btn_C.Enabled = true;
-                btn_D.Enabled = true;
-                btn_E.Enabled = true;
-                btn_F.Enabled = true;
-                btn_dot.Enabled = true;
-
+                binary = "hexa";
+                btn_0.Enabled = true;
+                btn_1.Enabled = true;
                 btn_2.Enabled = true;
                 btn_3.Enabled = true;
                 btn_4.Enabled = true;
@@ -256,6 +680,88 @@ namespace Calculator
                 btn_7.Enabled = true;
                 btn_8.Enabled = true;
                 btn_9.Enabled = true;
+                btn_A.Enabled = true;
+                btn_B.Enabled = true;
+                btn_C.Enabled = true;
+                btn_D.Enabled = true;
+                btn_E.Enabled = true;
+                btn_F.Enabled = true;
+
+                btn_dot.Enabled = false;
+            }
+        }
+
+        private void radioButton_dec_CheckedChanged(object sender, EventArgs e) // 10진수 활성화
+        {
+            if (radioButton_dec.Checked == true)
+            {
+                binary = "dec";
+                btn_0.Enabled = true;
+                btn_1.Enabled = true;
+                btn_2.Enabled = true;
+                btn_3.Enabled = true;
+                btn_4.Enabled = true;
+                btn_5.Enabled = true;
+                btn_6.Enabled = true;
+                btn_7.Enabled = true;
+                btn_8.Enabled = true;
+                btn_9.Enabled = true;
+
+                btn_A.Enabled = false;
+                btn_B.Enabled = false;
+                btn_C.Enabled = false;
+                btn_D.Enabled = false;
+                btn_E.Enabled = false;
+                btn_F.Enabled = false;
+                btn_dot.Enabled = false;
+            }
+        }
+
+        private void radioButton_bin_CheckedChanged(object sender, EventArgs e) //2진수 활성화
+        {
+            if (radioButton_bin.Checked == true)
+            {
+                binary = "bin";
+                btn_0.Enabled = true;
+                btn_1.Enabled = true;
+
+                btn_2.Enabled = false;
+                btn_3.Enabled = false;
+                btn_4.Enabled = false;
+                btn_5.Enabled = false;
+                btn_6.Enabled = false;
+                btn_7.Enabled = false;
+                btn_8.Enabled = false;
+                btn_9.Enabled = false;
+                btn_A.Enabled = false;
+                btn_B.Enabled = false;
+                btn_C.Enabled = false;
+                btn_D.Enabled = false;
+                btn_E.Enabled = false;
+                btn_F.Enabled = false;
+                btn_dot.Enabled = false;
+            }
+        }
+
+        private void label_hex_TextChanged(object sender, EventArgs e)
+        {
+            //label_hex.Text += Convert.ToString(Convert.ToInt32(textBox1_Result.Text), 16);
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.ToString() == "표준")
+            {
+                this.Close();
+                Calculator fm1 = new Calculator();
+                fm1.Show();
+
+            }
+
+            else if (comboBox1.SelectedIndex == 1)
+            {
+                return;
             }
         }
     }

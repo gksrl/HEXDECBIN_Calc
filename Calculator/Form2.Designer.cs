@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_dot = new System.Windows.Forms.Button();
             this.btn_0 = new System.Windows.Forms.Button();
-            this.textBox1_Result = new System.Windows.Forms.TextBox();
+            this.textBox2_Process = new System.Windows.Forms.TextBox();
             this.btn_result = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
             this.btn_multiple = new System.Windows.Forms.Button();
@@ -55,12 +55,14 @@
             this.btn_D = new System.Windows.Forms.Button();
             this.btn_E = new System.Windows.Forms.Button();
             this.btn_F = new System.Windows.Forms.Button();
-            this.checkBox1_Hex = new System.Windows.Forms.CheckBox();
-            this.checkBox2_Dec = new System.Windows.Forms.CheckBox();
-            this.checkBox3_Bin = new System.Windows.Forms.CheckBox();
             this.label_hex = new System.Windows.Forms.Label();
             this.label_dec = new System.Windows.Forms.Label();
             this.label_bin = new System.Windows.Forms.Label();
+            this.textBox1_Result = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.radioButton_hex = new System.Windows.Forms.RadioButton();
+            this.radioButton_dec = new System.Windows.Forms.RadioButton();
+            this.radioButton_bin = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -70,19 +72,20 @@
             this.comboBox1.Items.AddRange(new object[] {
             "표준",
             "프로그래머"});
-            this.comboBox1.Location = new System.Drawing.Point(241, 5);
+            this.comboBox1.Location = new System.Drawing.Point(12, 5);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 75;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 19);
+            this.label1.Location = new System.Drawing.Point(326, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 15);
             this.label1.TabIndex = 73;
-            this.label1.Text = "연산";
+            this.label1.Text = "입력";
             // 
             // btn_dot
             // 
@@ -108,18 +111,19 @@
             this.btn_0.UseVisualStyleBackColor = true;
             this.btn_0.Click += new System.EventHandler(this.btn_0_Click);
             // 
-            // textBox1_Result
+            // textBox2_Process
             // 
-            this.textBox1_Result.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.textBox1_Result.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1_Result.Font = new System.Drawing.Font("휴먼둥근헤드라인", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox1_Result.Location = new System.Drawing.Point(8, 41);
-            this.textBox1_Result.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1_Result.Multiline = true;
-            this.textBox1_Result.Name = "textBox1_Result";
-            this.textBox1_Result.Size = new System.Drawing.Size(356, 40);
-            this.textBox1_Result.TabIndex = 69;
-            this.textBox1_Result.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox2_Process.BackColor = System.Drawing.Color.White;
+            this.textBox2_Process.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2_Process.Font = new System.Drawing.Font("휴먼둥근헤드라인", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox2_Process.Location = new System.Drawing.Point(12, 41);
+            this.textBox2_Process.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox2_Process.Multiline = true;
+            this.textBox2_Process.Name = "textBox2_Process";
+            this.textBox2_Process.ReadOnly = true;
+            this.textBox2_Process.Size = new System.Drawing.Size(352, 40);
+            this.textBox2_Process.TabIndex = 69;
+            this.textBox2_Process.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btn_result
             // 
@@ -136,14 +140,15 @@
             // 
             // btn_clear
             // 
-            this.btn_clear.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_clear.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_clear.Location = new System.Drawing.Point(82, 452);
             this.btn_clear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(65, 52);
             this.btn_clear.TabIndex = 67;
-            this.btn_clear.Text = "c";
+            this.btn_clear.Text = "clear";
             this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // btn_multiple
             // 
@@ -327,13 +332,13 @@
             // 
             // btn_del
             // 
-            this.btn_del.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_del.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_del.Location = new System.Drawing.Point(304, 192);
             this.btn_del.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_del.Name = "btn_del";
             this.btn_del.Size = new System.Drawing.Size(65, 52);
             this.btn_del.TabIndex = 83;
-            this.btn_del.Text = "del";
+            this.btn_del.Text = "delete";
             this.btn_del.UseVisualStyleBackColor = true;
             this.btn_del.Click += new System.EventHandler(this.btn_del_Click);
             // 
@@ -385,77 +390,106 @@
             this.btn_F.UseVisualStyleBackColor = true;
             this.btn_F.Click += new System.EventHandler(this.btn_F_Click);
             // 
-            // checkBox1_Hex
-            // 
-            this.checkBox1_Hex.AutoSize = true;
-            this.checkBox1_Hex.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.checkBox1_Hex.Location = new System.Drawing.Point(8, 99);
-            this.checkBox1_Hex.Name = "checkBox1_Hex";
-            this.checkBox1_Hex.Size = new System.Drawing.Size(65, 27);
-            this.checkBox1_Hex.TabIndex = 88;
-            this.checkBox1_Hex.Text = "HEX";
-            this.checkBox1_Hex.UseVisualStyleBackColor = true;
-            this.checkBox1_Hex.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // checkBox2_Dec
-            // 
-            this.checkBox2_Dec.AutoSize = true;
-            this.checkBox2_Dec.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.checkBox2_Dec.Location = new System.Drawing.Point(8, 124);
-            this.checkBox2_Dec.Name = "checkBox2_Dec";
-            this.checkBox2_Dec.Size = new System.Drawing.Size(65, 27);
-            this.checkBox2_Dec.TabIndex = 89;
-            this.checkBox2_Dec.Text = "DEC";
-            this.checkBox2_Dec.UseVisualStyleBackColor = true;
-            this.checkBox2_Dec.CheckedChanged += new System.EventHandler(this.checkBox2_Dec_CheckedChanged);
-            // 
-            // checkBox3_Bin
-            // 
-            this.checkBox3_Bin.AutoSize = true;
-            this.checkBox3_Bin.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.checkBox3_Bin.Location = new System.Drawing.Point(8, 149);
-            this.checkBox3_Bin.Name = "checkBox3_Bin";
-            this.checkBox3_Bin.Size = new System.Drawing.Size(62, 27);
-            this.checkBox3_Bin.TabIndex = 90;
-            this.checkBox3_Bin.Text = "BIN";
-            this.checkBox3_Bin.UseVisualStyleBackColor = true;
-            this.checkBox3_Bin.CheckedChanged += new System.EventHandler(this.checkBox3_Bin_CheckedChanged);
-            // 
             // label_hex
             // 
             this.label_hex.AutoSize = true;
-            this.label_hex.Location = new System.Drawing.Point(79, 106);
+            this.label_hex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_hex.Location = new System.Drawing.Point(80, 108);
             this.label_hex.Name = "label_hex";
-            this.label_hex.Size = new System.Drawing.Size(0, 15);
+            this.label_hex.Size = new System.Drawing.Size(2, 17);
             this.label_hex.TabIndex = 91;
+            this.label_hex.TextChanged += new System.EventHandler(this.label_hex_TextChanged);
             // 
             // label_dec
             // 
             this.label_dec.AutoSize = true;
+            this.label_dec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_dec.Location = new System.Drawing.Point(79, 131);
             this.label_dec.Name = "label_dec";
-            this.label_dec.Size = new System.Drawing.Size(0, 15);
+            this.label_dec.Size = new System.Drawing.Size(2, 17);
             this.label_dec.TabIndex = 92;
             // 
             // label_bin
             // 
             this.label_bin.AutoSize = true;
+            this.label_bin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_bin.Location = new System.Drawing.Point(79, 156);
             this.label_bin.Name = "label_bin";
-            this.label_bin.Size = new System.Drawing.Size(0, 15);
+            this.label_bin.Size = new System.Drawing.Size(2, 17);
             this.label_bin.TabIndex = 93;
+            // 
+            // textBox1_Result
+            // 
+            this.textBox1_Result.BackColor = System.Drawing.Color.White;
+            this.textBox1_Result.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1_Result.Font = new System.Drawing.Font("휴먼둥근헤드라인", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox1_Result.Location = new System.Drawing.Point(230, 108);
+            this.textBox1_Result.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox1_Result.Multiline = true;
+            this.textBox1_Result.Name = "textBox1_Result";
+            this.textBox1_Result.ReadOnly = true;
+            this.textBox1_Result.Size = new System.Drawing.Size(134, 40);
+            this.textBox1_Result.TabIndex = 94;
+            this.textBox1_Result.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(326, 89);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.TabIndex = 95;
+            this.label2.Text = "출력";
+            // 
+            // radioButton_hex
+            // 
+            this.radioButton_hex.AutoSize = true;
+            this.radioButton_hex.Location = new System.Drawing.Point(12, 106);
+            this.radioButton_hex.Name = "radioButton_hex";
+            this.radioButton_hex.Size = new System.Drawing.Size(56, 19);
+            this.radioButton_hex.TabIndex = 96;
+            this.radioButton_hex.TabStop = true;
+            this.radioButton_hex.Text = "HEX";
+            this.radioButton_hex.UseVisualStyleBackColor = true;
+            this.radioButton_hex.CheckedChanged += new System.EventHandler(this.radioButton_hex_CheckedChanged);
+            // 
+            // radioButton_dec
+            // 
+            this.radioButton_dec.AutoSize = true;
+            this.radioButton_dec.Location = new System.Drawing.Point(12, 131);
+            this.radioButton_dec.Name = "radioButton_dec";
+            this.radioButton_dec.Size = new System.Drawing.Size(57, 19);
+            this.radioButton_dec.TabIndex = 97;
+            this.radioButton_dec.TabStop = true;
+            this.radioButton_dec.Text = "DEC";
+            this.radioButton_dec.UseVisualStyleBackColor = true;
+            this.radioButton_dec.CheckedChanged += new System.EventHandler(this.radioButton_dec_CheckedChanged);
+            // 
+            // radioButton_bin
+            // 
+            this.radioButton_bin.AutoSize = true;
+            this.radioButton_bin.Location = new System.Drawing.Point(12, 156);
+            this.radioButton_bin.Name = "radioButton_bin";
+            this.radioButton_bin.Size = new System.Drawing.Size(50, 19);
+            this.radioButton_bin.TabIndex = 98;
+            this.radioButton_bin.TabStop = true;
+            this.radioButton_bin.Text = "BIN";
+            this.radioButton_bin.UseVisualStyleBackColor = true;
+            this.radioButton_bin.CheckedChanged += new System.EventHandler(this.radioButton_bin_CheckedChanged);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 506);
+            this.ClientSize = new System.Drawing.Size(376, 506);
+            this.Controls.Add(this.radioButton_bin);
+            this.Controls.Add(this.radioButton_dec);
+            this.Controls.Add(this.radioButton_hex);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox1_Result);
             this.Controls.Add(this.label_bin);
             this.Controls.Add(this.label_dec);
             this.Controls.Add(this.label_hex);
-            this.Controls.Add(this.checkBox3_Bin);
-            this.Controls.Add(this.checkBox2_Dec);
-            this.Controls.Add(this.checkBox1_Hex);
             this.Controls.Add(this.btn_F);
             this.Controls.Add(this.btn_E);
             this.Controls.Add(this.btn_D);
@@ -469,7 +503,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_dot);
             this.Controls.Add(this.btn_0);
-            this.Controls.Add(this.textBox1_Result);
+            this.Controls.Add(this.textBox2_Process);
             this.Controls.Add(this.btn_result);
             this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btn_multiple);
@@ -485,6 +519,7 @@
             this.Controls.Add(this.btn_1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "프로그래머 계산기";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -497,7 +532,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_dot;
         private System.Windows.Forms.Button btn_0;
-        private System.Windows.Forms.TextBox textBox1_Result;
+        private System.Windows.Forms.TextBox textBox2_Process;
         private System.Windows.Forms.Button btn_result;
         private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.Button btn_multiple;
@@ -520,11 +555,13 @@
         private System.Windows.Forms.Button btn_D;
         private System.Windows.Forms.Button btn_E;
         private System.Windows.Forms.Button btn_F;
-        private System.Windows.Forms.CheckBox checkBox1_Hex;
-        private System.Windows.Forms.CheckBox checkBox2_Dec;
-        private System.Windows.Forms.CheckBox checkBox3_Bin;
         private System.Windows.Forms.Label label_hex;
         private System.Windows.Forms.Label label_dec;
         private System.Windows.Forms.Label label_bin;
+        private System.Windows.Forms.TextBox textBox1_Result;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton radioButton_hex;
+        private System.Windows.Forms.RadioButton radioButton_dec;
+        private System.Windows.Forms.RadioButton radioButton_bin;
     }
 }

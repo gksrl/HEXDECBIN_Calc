@@ -145,7 +145,8 @@ namespace Calculator
 
                 else
                 {
-                    second = Convert.ToInt16(textBox2_Process.Text);
+                    second = Convert.ToInt16(textBox2_Process.Text)
+                        ;
                     textBox2_Process.Text += "";
                     save = (first += second);
                     textBox1_Result.Text = Convert.ToString(save);
@@ -355,6 +356,7 @@ namespace Calculator
         {
             if (comboBox1.SelectedItem.ToString() == "프로그래머") 
             {
+                this.Close();
                 Form2 fm2 = new Form2();
                 fm2.Show();
             }

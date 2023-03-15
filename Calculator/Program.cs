@@ -16,7 +16,11 @@ namespace Calculator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Calculator());
+            //Application.Run(new Calculator());
+
+            (new Calculator()).Show();
+            Application.Run();   // 부모 자식 간 폼전환
+
         }
     }
 }
