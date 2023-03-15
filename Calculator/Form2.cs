@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Calculator
@@ -53,7 +46,7 @@ namespace Calculator
             label_bin.Text = "";
             int num_alpha;
             num_alpha = int.Parse(alpha, System.Globalization.NumberStyles.HexNumber);
-            label_hex.Text += Convert.ToString(Convert.ToString(num_alpha, 16)).ToUpper();;
+            label_hex.Text += Convert.ToString(Convert.ToString(num_alpha, 16)).ToUpper(); ;
             label_dec.Text += Convert.ToString(Convert.ToString(num_alpha, 10));
             label_bin.Text += Convert.ToString(Convert.ToString(num_alpha, 2));
 
@@ -79,21 +72,21 @@ namespace Calculator
             //        break;
             //}
 
-            if(radioButton_hex.Checked == true)
+            if (radioButton_hex.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)); 
-                PrintNumJinsu(int.Parse(textBox2_Process.Text,System.Globalization.NumberStyles.HexNumber));
+                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
+                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
             }
-            else if(radioButton_dec.Checked == true)
+            else if (radioButton_dec.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 10);
                 PrintNumJinsu(int.Parse(textBox2_Process.Text));
             }
-            else if(radioButton_bin.Checked == true)
+            else if (radioButton_bin.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(numpad,2);
-                binarytransform = Convert.ToString(numpad,2);
-                PrintNumJinsu(int.Parse(binarytransform));
+                textBox2_Process.Text += Convert.ToString(numpad, 2);
+                binarytransform += Convert.ToString(numpad, 2);
+                PrintNumJinsu(Convert.ToInt32(binarytransform, 2));
 
             }
         }
@@ -105,7 +98,7 @@ namespace Calculator
             if (radioButton_hex.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-                PrintNumJinsu(int.Parse(textBox2_Process.Text,System.Globalization.NumberStyles.HexNumber));
+                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
             }
             else if (radioButton_dec.Checked == true)
             {
@@ -250,9 +243,9 @@ namespace Calculator
             }
             else if (radioButton_bin.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(numpad,2);
-                binarytransform = Convert.ToString(numpad, 2);
-                PrintNumJinsu(int.Parse(binarytransform));
+                textBox2_Process.Text += Convert.ToString(numpad, 2);
+                binarytransform += Convert.ToString(numpad, 2);
+                PrintNumJinsu(Convert.ToInt32(binarytransform, 2));
             }
         }
 
@@ -263,11 +256,11 @@ namespace Calculator
 
         private void btn_A_Click(object sender, EventArgs e)
         {
-            numpad = 0XA;
+            numpad = 10;
 
-            textBox2_Process.Text += Convert.ToString(numpad,16).ToUpper();
+            textBox2_Process.Text += Convert.ToString(numpad, 16).ToUpper();
             //textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
-            PrintNumJinsu(int.Parse(textBox2_Process.Text,System.Globalization.NumberStyles.HexNumber));
+            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
 
 
         }
@@ -325,81 +318,104 @@ namespace Calculator
 
         private void btn_plus_Click(object sender, EventArgs e)
         {
-           
-                    if (isTwice == true)
+
+            if (isTwice == true)
+            {
+                if (textBox2_Process.Text == "")
+                {
+                    first = save;
+                    textBox2_Process.Text = "";
+                    isTwice = true;
+                }
+
+                else if (op != '+')          // N + N ? N 사칙연산
+                {
+
+                    if (op == '-')
                     {
-                        if (textBox2_Process.Text == "")
-                        {
-                            first = save;
-                            textBox2_Process.Text = "";
-                            isTwice = true;
-                        }
-
-                        else if (op != '+')          // N + N ? N 사칙연산
-                        {
-
-                            if (op == '-')
-                            {
-                                second = Convert.ToInt16(textBox2_Process.Text);
-                                textBox2_Process.Text += "";
-                                save = (first -= second);
-                                textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
-                                isTwice = true;
-                            }
-                            else if (op == '*')
-                            {
-                                second = Convert.ToInt16(textBox2_Process.Text);
-                                textBox2_Process.Text += "";
-                                save = (first *= second);
-                                textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
-                                isTwice = true;
-                            }
-                            else
-                            {
-                                second = Convert.ToInt16(textBox2_Process.Text);
-                                textBox2_Process.Text += "";
-                                save = (first /= second);
-                                textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
-                                isTwice = true;
-                            }
-                        }
-
-                        else   // N + N + N 덧샘
-                        {
-                            second = Convert.ToInt16(textBox2_Process.Text)
-                                ;
-                            textBox2_Process.Text += "";
-                            save = (first += second);
-                            switch(binary)
-                            {
-                                case "hexa":
-                                    textBox1_Result.Text = Convert.ToString(save, 16);
-                                    PrintNumJinsu(int.Parse(textBox1_Result.Text, System.Globalization.NumberStyles.HexNumber));
-                                    break;
-                                case "dec":
-                                    textBox1_Result.Text = Convert.ToString(save);
-                                    PrintNumJinsu(save);
-                                    break;
-                                case "bin":
-                                    break;
-
-                            }
-                            isTwice = true;
-                        }
-                    }
-
-                    else    // N + N  =
-                    {
-                        first = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text = "";
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first -= second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        PrintNumJinsu(save);
                         isTwice = true;
                     }
+                    else if (op == '*')
+                    {
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first *= second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        PrintNumJinsu(save);
+                        isTwice = true;
+                    }
+                    else
+                    {
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text += "";
+                        save = (first /= second);
+                        textBox1_Result.Text = Convert.ToString(save);
+                        PrintNumJinsu(save);
+                        isTwice = true;
+                    }
+                }
 
-                    textBox2_Process.Text = "";
-                    op = '+';
+                else   // N + N + N 덧샘
+                {
+                    //second = Convert.ToInt16(textBox2_Process.Text);
+                    //textBox2_Process.Text += "";
+                    //save = (first += second);
+                    //textBox1_Result.Text = Convert.ToString(save);
+                    //PrintNumJinsu(save);
+
+                    switch (binary)
+                    {
+                        case "hexa":
+                            second = Convert.ToInt32(textBox2_Process.Text, 16);
+                            textBox2_Process.Text += "";
+                            save = (first += second);
+                            textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                            PrintNumJinsu(save); 
+
+                            break;
+                        case "dec":
+                            second = Convert.ToInt16(textBox2_Process.Text);
+                            textBox2_Process.Text += "";
+                            save = (first += second);
+                            textBox1_Result.Text = Convert.ToString(save);
+                            PrintNumJinsu(save);
+                            break;
+                        case "bin":
+                            break;
+
+                    }
+                    isTwice = true;
+                }
+            }
+
+            else    // N + N  =
+            {
+                switch (binary)
+                {
+                    case "hexa":
+                        first = Convert.ToInt32(textBox2_Process.Text, 16); // 16진수 10진수로 변환
+                        textBox2_Process.Text = "";
+                        break;
+                    case "dec":
+                        first = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text = "";
+                        break;
+                    case "bin":
+                        first = Convert.ToInt32(textBox2_Process.Text, 2); // 16진수 10진수로 변환
+                        textBox2_Process.Text = "";
+                        break;
+
+                }
+                isTwice = true;
+            }
+
+            textBox2_Process.Text = "";
+            op = '+';
         }
 
         private void btn_minus_Click(object sender, EventArgs e)
@@ -658,6 +674,7 @@ namespace Calculator
             first = 0;
             second = 0;
             save = 0;
+            binarytransform = "";
             isTwice = false;
 
             label_hex.Text = "";
