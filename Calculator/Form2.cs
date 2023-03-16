@@ -16,41 +16,17 @@ namespace Calculator
             InitializeComponent();
             comboBox1.SelectedIndex = 1;
             radioButton_dec.Checked = true;
-
         }
 
 
-        private void PrintJinsu()  // 연산 결과 진수 변환 
-        {
-            label_hex.Text = "";
-            label_dec.Text = "";
-            label_bin.Text = "";
-
-            label_hex.Text += Convert.ToString(Convert.ToString(save, 16)).ToUpper(); ;
-            label_dec.Text += Convert.ToString(Convert.ToString(save, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(save, 2));
-        }
-
-        private void PrintNumJinsu(int num) // 계산기 텍스트 출력 진수 변환
+        private void PrintLabelJinsu(int num) // 계산기 텍스트 출력 진수 변환
         {
 
-            label_hex.Text = Convert.ToString(Convert.ToString(num, 16)).ToUpper(); ;
-            label_dec.Text = Convert.ToString(Convert.ToString(num, 10));
-            label_bin.Text = Convert.ToString(Convert.ToString(num, 2));
+            label_hex.Text = Convert.ToString(num, 16).ToUpper();
+            label_dec.Text = Convert.ToString(num, 10);
+            label_bin.Text = Convert.ToString(num, 2).PadLeft(8, '0').Insert(4, " ");
         }
 
-        private void PrintHexaJinsu(string alpha) // 계산기 문자 텍스트 출력 진수 변환
-        {
-            label_hex.Text = "";
-            label_dec.Text = "";
-            label_bin.Text = "";
-            int num_alpha;
-            num_alpha = int.Parse(alpha, System.Globalization.NumberStyles.HexNumber);
-            label_hex.Text += Convert.ToString(Convert.ToString(num_alpha, 16)).ToUpper(); ;
-            label_dec.Text += Convert.ToString(Convert.ToString(num_alpha, 10));
-            label_bin.Text += Convert.ToString(Convert.ToString(num_alpha, 2));
-
-        }
 
         private void btn_1_Click(object sender, EventArgs e)
         {
@@ -60,33 +36,33 @@ namespace Calculator
             //{
             //    case "hex":
             //        textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-            //        PrintNumJinsu(numpad);
+            //        PrintLabelJinsu(numpad);
             //        break;
             //    case "dec":
             //        textBox2_Process.Text += Convert.ToString(numpad, 10);
-            //        PrintNumJinsu(numpad);
+            //        PrintLabelJinsu(numpad);
             //        break;
             //    case "bin":
             //        textBox2_Process.Text += Convert.ToString(numpad, 2);
-            //        PrintNumJinsu(numpad);
+            //        PrintLabelJinsu(numpad);
             //        break;
             //}
 
             if (radioButton_hex.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+                textBox2_Process.Text += Convert.ToString(numpad, 16);
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
             }
             else if (radioButton_dec.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 10);
-                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text));
             }
             else if (radioButton_bin.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 2);
                 binarytransform += Convert.ToString(numpad, 2);
-                PrintNumJinsu(Convert.ToInt32(binarytransform, 2));
+                PrintLabelJinsu(Convert.ToInt32(binarytransform, 2));
 
             }
         }
@@ -97,13 +73,13 @@ namespace Calculator
 
             if (radioButton_hex.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+                textBox2_Process.Text += Convert.ToString(numpad, 16);
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
             }
             else if (radioButton_dec.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 10);
-                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text));
             }
         }
 
@@ -113,14 +89,14 @@ namespace Calculator
 
             if (radioButton_hex.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+                textBox2_Process.Text += Convert.ToString(numpad, 16);
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
 
             }
             else if (radioButton_dec.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 10);
-                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text));
             }
         }
 
@@ -130,14 +106,14 @@ namespace Calculator
 
             if (radioButton_hex.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+                textBox2_Process.Text += Convert.ToString(numpad, 16);
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
 
             }
             else if (radioButton_dec.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 10);
-                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text));
             }
         }
 
@@ -147,14 +123,14 @@ namespace Calculator
 
             if (radioButton_hex.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+                textBox2_Process.Text += Convert.ToString(numpad, 16);
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
 
             }
             else if (radioButton_dec.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 10);
-                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text));
             }
         }
 
@@ -164,14 +140,14 @@ namespace Calculator
 
             if (radioButton_hex.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+                textBox2_Process.Text += Convert.ToString(numpad, 16);
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
 
             }
             else if (radioButton_dec.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 10);
-                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text));
             }
         }
 
@@ -181,14 +157,14 @@ namespace Calculator
 
             if (radioButton_hex.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+                textBox2_Process.Text += Convert.ToString(numpad, 16);
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
 
             }
             else if (radioButton_dec.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 10);
-                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text));
             }
         }
 
@@ -198,14 +174,14 @@ namespace Calculator
 
             if (radioButton_hex.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+                textBox2_Process.Text += Convert.ToString(numpad, 16);
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
 
             }
             else if (radioButton_dec.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 10);
-                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text));
             }
         }
 
@@ -215,14 +191,14 @@ namespace Calculator
 
             if (radioButton_hex.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+                textBox2_Process.Text += Convert.ToString(numpad, 16);
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
 
             }
             else if (radioButton_dec.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 10);
-                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text));
             }
         }
 
@@ -232,20 +208,20 @@ namespace Calculator
 
             if (radioButton_hex.Checked == true)
             {
-                textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16));
-                PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+                textBox2_Process.Text += Convert.ToString(numpad, 16);
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
 
             }
             else if (radioButton_dec.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 10);
-                PrintNumJinsu(int.Parse(textBox2_Process.Text));
+                PrintLabelJinsu(int.Parse(textBox2_Process.Text));
             }
             else if (radioButton_bin.Checked == true)
             {
                 textBox2_Process.Text += Convert.ToString(numpad, 2);
                 binarytransform += Convert.ToString(numpad, 2);
-                PrintNumJinsu(Convert.ToInt32(binarytransform, 2));
+                PrintLabelJinsu(Convert.ToInt32(binarytransform, 2));
             }
         }
 
@@ -260,7 +236,7 @@ namespace Calculator
 
             textBox2_Process.Text += Convert.ToString(numpad, 16).ToUpper();
             //textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
-            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+            PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
 
 
         }
@@ -269,40 +245,40 @@ namespace Calculator
         {
             numpad = 0XB;
 
-            textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
-            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+            textBox2_Process.Text += Convert.ToString(numpad, 16).ToUpper();
+            PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
         }
 
         private void btn_C_Click(object sender, EventArgs e)
         {
             numpad = 0XC;
 
-            textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
-            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+            textBox2_Process.Text += Convert.ToString(numpad, 16).ToUpper();
+            PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
         }
 
         private void btn_D_Click(object sender, EventArgs e)
         {
             numpad = 0XD;
 
-            textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
-            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+            textBox2_Process.Text += Convert.ToString(numpad, 16).ToUpper();
+            PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
         }
 
         private void btn_E_Click(object sender, EventArgs e)
         {
             numpad = 0XE;
 
-            textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
-            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+            textBox2_Process.Text += Convert.ToString(numpad, 16).ToUpper();
+            PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
         }
 
         private void btn_F_Click(object sender, EventArgs e)
         {
             numpad = 0XF;
 
-            textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
-            PrintNumJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
+            textBox2_Process.Text += Convert.ToString(numpad, 16).ToUpper();
+            PrintLabelJinsu(int.Parse(textBox2_Process.Text, System.Globalization.NumberStyles.HexNumber));
         }
 
         private void btn_del_Click(object sender, EventArgs e)
@@ -311,9 +287,52 @@ namespace Calculator
             {
                 Convert.ToString(textBox2_Process.Text).EndsWith(" ");
                 textBox2_Process.Text = textBox2_Process.Text.Substring(0, textBox2_Process.Text.Length - 1);
+                switch (binary)
+                {
+                    case "hexa":
+                        if (textBox2_Process.Text == "")
+                        {
+                            label_hex.Text = "";
+                            label_dec.Text = "";
+                            label_bin.Text = "";
+                        }
+                        else
+                        {
+                            PrintLabelJinsu(Convert.ToInt32(textBox2_Process.Text, 16));
+                        }
+                        break;
+                    case "dec":
+                        if (textBox2_Process.Text == "")
+                        {
+                            label_hex.Text = "";
+                            label_dec.Text = "";
+                            label_bin.Text = "";
+                        }
+                        else
+                        {
+                            PrintLabelJinsu(Convert.ToInt32(textBox2_Process.Text, 10));
+                        }
+                        break;
+                    case "bin":
+                        if (textBox2_Process.Text == "")
+                        {
+                            label_hex.Text = "";
+                            label_dec.Text = "";
+                            label_bin.Text = "";
+                        }
+                        else
+                        {
+                            PrintLabelJinsu(Convert.ToInt32(textBox2_Process.Text, 2));
+                        }
+                        break;
+
+                }
             }
-            else
+            else if (textBox2_Process.Text.Length == 0)
+            {
                 return;
+            }
+
         }
 
         private void btn_plus_Click(object sender, EventArgs e)
@@ -331,32 +350,33 @@ namespace Calculator
                 else if (op != '+')          // X + Y ? Z 사칙연산
                 {
                     switch (binary)
-                    { case "hexa":
+                    {
+                        case "hexa":
                             if (op == '-')
                             {
-                                second = Convert.ToInt16(textBox2_Process.Text,16);
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
                                 textBox2_Process.Text += "";
                                 save = (first -= second);
-                                textBox1_Result.Text = Convert.ToString(save,16).ToUpper();
-                                PrintNumJinsu(save);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '*')
                             {
-                                second = Convert.ToInt16(textBox2_Process.Text,16);
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
                                 textBox2_Process.Text += "";
                                 save = (first *= second);
-                                textBox1_Result.Text = Convert.ToString(save,16).ToUpper();
-                                PrintNumJinsu(save);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
                             {
-                                second = Convert.ToInt16(textBox2_Process.Text,16);
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
                                 textBox2_Process.Text += "";
                                 save = (first /= second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -367,7 +387,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first -= second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '*')
@@ -376,7 +396,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first *= second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
@@ -385,7 +405,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first /= second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -396,7 +416,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first -= second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '*')
@@ -405,7 +425,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first *= second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
@@ -414,7 +434,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first /= second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -427,16 +447,16 @@ namespace Calculator
                     //textBox2_Process.Text += "";
                     //save = (first += second);
                     //textBox1_Result.Text = Convert.ToString(save);
-                    //PrintNumJinsu(save);
+                    //PrintLabelJinsu(save);
 
                     switch (binary)
                     {
                         case "hexa":
-                            second = Convert.ToInt32(textBox2_Process.Text, 16); // 두번째 변수 16진수로 입력 
+                            second = Convert.ToInt32(textBox2_Process.Text, 16);
                             textBox2_Process.Text += "";
                             save = (first += second);
                             textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                            PrintNumJinsu(save); 
+                            PrintLabelJinsu(save);
 
                             break;
                         case "dec":
@@ -444,14 +464,14 @@ namespace Calculator
                             textBox2_Process.Text += "";
                             save = (first += second);
                             textBox1_Result.Text = Convert.ToString(save);
-                            PrintNumJinsu(save);
+                            PrintLabelJinsu(save);
                             break;
                         case "bin":
-                            second = Convert.ToInt32(textBox2_Process.Text, 2); // 두번째 변수 2진수로 입력 
+                            second = Convert.ToInt32(textBox2_Process.Text, 2);
                             textBox2_Process.Text += "";
                             save = (first += second);
                             textBox1_Result.Text = Convert.ToString(save, 2);
-                            PrintNumJinsu(save);
+                            PrintLabelJinsu(save);
                             break;
 
                     }
@@ -461,21 +481,30 @@ namespace Calculator
 
             else    // N + N  =
             {
-                switch (binary)
+                if (textBox2_Process.Text == "")
                 {
-                    case "hexa":
-                        first = Convert.ToInt32(textBox2_Process.Text, 16); // 16진수 10진수로 변환
-                        textBox2_Process.Text = "";
-                        break;
-                    case "dec":
-                        first = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text = "";
-                        break;
-                    case "bin":
-                        first = Convert.ToInt32(textBox2_Process.Text, 2); // 16진수 10진수로 변환
-                        textBox2_Process.Text = "";
-                        break;
+                    MessageBox.Show("숫자를 입력하세요");
+                    return;
+                }
 
+                else
+                {
+                    switch (binary)
+                    {
+                        case "hexa":
+                            first = Convert.ToInt32(textBox2_Process.Text, 16);
+                            textBox2_Process.Text = "";
+                            break;
+                        case "dec":
+                            first = Convert.ToInt16(textBox2_Process.Text);
+                            textBox2_Process.Text = "";
+                            break;
+                        case "bin":
+                            first = Convert.ToInt32(textBox2_Process.Text, 2);
+                            textBox2_Process.Text = "";
+                            break;
+
+                    }
                 }
                 isTwice = true;
             }
@@ -506,7 +535,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first += second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '*')
@@ -515,7 +544,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first *= second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
@@ -524,7 +553,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first /= second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -535,7 +564,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first += second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '*')
@@ -544,7 +573,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first *= second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
@@ -553,7 +582,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first /= second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -564,7 +593,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first += second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '*')
@@ -573,7 +602,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first *= second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
@@ -582,7 +611,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first /= second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -598,7 +627,7 @@ namespace Calculator
                             textBox2_Process.Text += "";
                             save = (first -= second);
                             textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                            PrintNumJinsu(save);
+                            PrintLabelJinsu(save);
 
                             break;
                         case "dec":
@@ -606,14 +635,14 @@ namespace Calculator
                             textBox2_Process.Text += "";
                             save = (first -= second);
                             textBox1_Result.Text = Convert.ToString(save);
-                            PrintNumJinsu(save);
+                            PrintLabelJinsu(save);
                             break;
                         case "bin":
                             second = Convert.ToInt32(textBox2_Process.Text, 2); // 두번째 변수 2진수로 입력 
                             textBox2_Process.Text += "";
                             save = (first -= second);
                             textBox1_Result.Text = Convert.ToString(save, 2);
-                            PrintNumJinsu(save);
+                            PrintLabelJinsu(save);
                             break;
 
                     }
@@ -625,7 +654,7 @@ namespace Calculator
                 switch (binary)
                 {
                     case "hexa":
-                        first = Convert.ToInt32(textBox2_Process.Text, 16); 
+                        first = Convert.ToInt32(textBox2_Process.Text, 16);
                         textBox2_Process.Text = "";
                         break;
                     case "dec":
@@ -667,7 +696,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first += second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '-')
@@ -676,7 +705,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first -= second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
@@ -685,7 +714,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first /= second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -696,7 +725,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first += second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '-')
@@ -705,7 +734,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first -= second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
@@ -714,7 +743,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first /= second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -725,7 +754,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first += second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '-')
@@ -734,7 +763,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first -= second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
@@ -743,7 +772,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first /= second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -759,7 +788,7 @@ namespace Calculator
                             textBox2_Process.Text += "";
                             save = (first *= second);
                             textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                            PrintNumJinsu(save);
+                            PrintLabelJinsu(save);
 
                             break;
                         case "dec":
@@ -767,14 +796,14 @@ namespace Calculator
                             textBox2_Process.Text += "";
                             save = (first *= second);
                             textBox1_Result.Text = Convert.ToString(save);
-                            PrintNumJinsu(save);
+                            PrintLabelJinsu(save);
                             break;
                         case "bin":
                             second = Convert.ToInt32(textBox2_Process.Text, 2); // 두번째 변수 2진수로 입력 
                             textBox2_Process.Text += "";
                             save = (first *= second);
                             textBox1_Result.Text = Convert.ToString(save, 2);
-                            PrintNumJinsu(save);
+                            PrintLabelJinsu(save);
                             break;
 
                     }
@@ -829,7 +858,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first += second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '-')
@@ -838,7 +867,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first -= second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
@@ -847,7 +876,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first *= second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -858,7 +887,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first += second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '-')
@@ -867,7 +896,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first -= second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
@@ -876,7 +905,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first *= second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -887,7 +916,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first += second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else if (op == '-')
@@ -896,7 +925,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first -= second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             else
@@ -905,7 +934,7 @@ namespace Calculator
                                 textBox2_Process.Text += "";
                                 save = (first *= second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 isTwice = true;
                             }
                             break;
@@ -917,11 +946,11 @@ namespace Calculator
                     switch (binary)
                     {
                         case "hexa":
-                            second = Convert.ToInt32(textBox2_Process.Text, 16); 
+                            second = Convert.ToInt32(textBox2_Process.Text, 16);
                             textBox2_Process.Text += "";
                             save = (first /= second);
                             textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                            PrintNumJinsu(save);
+                            PrintLabelJinsu(save);
 
                             break;
                         case "dec":
@@ -929,14 +958,14 @@ namespace Calculator
                             textBox2_Process.Text += "";
                             save = (first /= second);
                             textBox1_Result.Text = Convert.ToString(save);
-                            PrintNumJinsu(save);
+                            PrintLabelJinsu(save);
                             break;
                         case "bin":
-                            second = Convert.ToInt32(textBox2_Process.Text, 2); 
+                            second = Convert.ToInt32(textBox2_Process.Text, 2);
                             textBox2_Process.Text += "";
                             save = (first /= second);
                             textBox1_Result.Text = Convert.ToString(save, 2);
-                            PrintNumJinsu(save);
+                            PrintLabelJinsu(save);
                             break;
 
                     }
@@ -949,7 +978,7 @@ namespace Calculator
                 switch (binary)
                 {
                     case "hexa":
-                        first = Convert.ToInt32(textBox2_Process.Text, 16); 
+                        first = Convert.ToInt32(textBox2_Process.Text, 16);
                         textBox2_Process.Text = "";
                         break;
                     case "dec":
@@ -957,7 +986,7 @@ namespace Calculator
                         textBox2_Process.Text = "";
                         break;
                     case "bin":
-                        first = Convert.ToInt32(textBox2_Process.Text, 2); 
+                        first = Convert.ToInt32(textBox2_Process.Text, 2);
                         textBox2_Process.Text = "";
                         break;
 
@@ -980,24 +1009,24 @@ namespace Calculator
                         {
                             case '+':
                                 save += second;
-                                textBox1_Result.Text = Convert.ToString(save,16).ToUpper();
-                                PrintNumJinsu(save);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintLabelJinsu(save);
 
                                 break;
                             case '-':
                                 save -= second;
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '*':
                                 save *= second;
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '/':
                                 save /= second;
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                         }
                         break;
@@ -1007,23 +1036,23 @@ namespace Calculator
                             case '+':
                                 save += second;
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
 
                                 break;
                             case '-':
                                 save -= second;
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '*':
                                 save *= second;
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '/':
                                 save /= second;
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                         }
                         break;
@@ -1033,23 +1062,23 @@ namespace Calculator
                             case '+':
                                 save += second;
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
 
                                 break;
                             case '-':
                                 save -= second;
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '*':
                                 save *= second;
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '/':
                                 save /= second;
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                         }
                         break;
@@ -1061,33 +1090,33 @@ namespace Calculator
                 switch (binary)
                 {
                     case "hexa":
-                        second = Convert.ToInt16(textBox2_Process.Text,16);
+                        second = Convert.ToInt16(textBox2_Process.Text, 16);
                         switch (op)
                         {
                             case '+':
                                 textBox2_Process.Text = "";
                                 save = (first + second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
 
                             case '-':
                                 textBox2_Process.Text = "";
                                 save = (first - second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '*':
                                 textBox2_Process.Text = "";
                                 save = (first * second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '/':
                                 textBox2_Process.Text = "";
                                 save = (first / second);
                                 textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                         }
                         break;
@@ -1097,28 +1126,28 @@ namespace Calculator
                         {
                             case '+':
                                 textBox2_Process.Text = "";
-                                save = (first + second);  
+                                save = (first + second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
 
                             case '-':
                                 textBox2_Process.Text = "";
                                 save = (first - second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '*':
                                 textBox2_Process.Text = "";
                                 save = (first * second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '/':
                                 textBox2_Process.Text = "";
                                 save = (first / second);
                                 textBox1_Result.Text = Convert.ToString(save);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                         }
                         break;
@@ -1130,26 +1159,26 @@ namespace Calculator
                                 textBox2_Process.Text = "";
                                 save = (first + second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
 
                             case '-':
                                 textBox2_Process.Text = "";
                                 save = (first - second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '*':
                                 textBox2_Process.Text = "";
                                 save = (first * second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                             case '/':
                                 textBox2_Process.Text = "";
                                 save = (first / second);
                                 textBox1_Result.Text = Convert.ToString(save, 2);
-                                PrintNumJinsu(save);
+                                PrintLabelJinsu(save);
                                 break;
                         }
                         break;
@@ -1162,7 +1191,7 @@ namespace Calculator
         private void btn_clear_Click(object sender, EventArgs e)
         {
             textBox1_Result.Text = "";
-            textBox2_Process.Text = "";
+            textBox2_Process.Text = "0";
             first = 0;
             second = 0;
             save = 0;
@@ -1202,6 +1231,12 @@ namespace Calculator
 
                 btn_dot.Enabled = false;
             }
+            textBox2_Process.Text = label_hex.Text;
+            textBox1_Result.Text = "";
+            first = 0;
+            second = 0;
+            save = 0;
+            isTwice = false;
         }
 
         private void radioButton_dec_CheckedChanged(object sender, EventArgs e) // 10진수 활성화
@@ -1228,6 +1263,12 @@ namespace Calculator
                 btn_F.Enabled = false;
                 btn_dot.Enabled = false;
             }
+            textBox2_Process.Text = label_dec.Text;
+            textBox1_Result.Text = "";
+            first = 0;
+            second = 0;
+            isTwice = false;
+
         }
 
         private void radioButton_bin_CheckedChanged(object sender, EventArgs e) //2진수 활성화
@@ -1254,6 +1295,22 @@ namespace Calculator
                 btn_F.Enabled = false;
                 btn_dot.Enabled = false;
             }
+            string temp1;
+            if(label_bin.Text == "")
+            {
+                return;
+            }
+            else
+            {
+                temp1 = label_bin.Text.Substring(0, 4) + label_bin.Text.Substring(label_bin.Text.Length - 4);
+                textBox2_Process.Text = temp1;
+                textBox1_Result.Text = "";
+            }
+
+            first = 0;
+            second = 0;
+            isTwice = false;
+
         }
 
         private void label_hex_TextChanged(object sender, EventArgs e)

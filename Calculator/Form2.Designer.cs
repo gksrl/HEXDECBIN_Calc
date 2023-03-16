@@ -422,7 +422,7 @@
             // 
             this.textBox1_Result.BackColor = System.Drawing.Color.White;
             this.textBox1_Result.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1_Result.Font = new System.Drawing.Font("휴먼둥근헤드라인", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox1_Result.Font = new System.Drawing.Font("휴먼둥근헤드라인", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox1_Result.Location = new System.Drawing.Point(230, 108);
             this.textBox1_Result.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1_Result.Multiline = true;
@@ -430,7 +430,7 @@
             this.textBox1_Result.ReadOnly = true;
             this.textBox1_Result.Size = new System.Drawing.Size(134, 40);
             this.textBox1_Result.TabIndex = 94;
-            this.textBox1_Result.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox1_Result.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
