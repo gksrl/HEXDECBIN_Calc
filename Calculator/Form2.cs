@@ -256,7 +256,7 @@ namespace Calculator
 
         private void btn_A_Click(object sender, EventArgs e)
         {
-            numpad = 10;
+            numpad = 0XA;
 
             textBox2_Process.Text += Convert.ToString(numpad, 16).ToUpper();
             //textBox2_Process.Text += Convert.ToString(Convert.ToString(numpad, 16)).ToUpper();
@@ -321,42 +321,103 @@ namespace Calculator
 
             if (isTwice == true)
             {
-                if (textBox2_Process.Text == "")
+                if (textBox2_Process.Text == "")   // X+Y= +
                 {
                     first = save;
                     textBox2_Process.Text = "";
                     isTwice = true;
                 }
 
-                else if (op != '+')          // N + N ? N 사칙연산
+                else if (op != '+')          // X + Y ? Z 사칙연산
                 {
-
-                    if (op == '-')
-                    {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first -= second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        PrintNumJinsu(save);
-                        isTwice = true;
-                    }
-                    else if (op == '*')
-                    {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first *= second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        PrintNumJinsu(save);
-                        isTwice = true;
-                    }
-                    else
-                    {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first /= second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        PrintNumJinsu(save);
-                        isTwice = true;
+                    switch (binary)
+                    { case "hexa":
+                            if (op == '-')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text,16);
+                                textBox2_Process.Text += "";
+                                save = (first -= second);
+                                textBox1_Result.Text = Convert.ToString(save,16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '*')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text,16);
+                                textBox2_Process.Text += "";
+                                save = (first *= second);
+                                textBox1_Result.Text = Convert.ToString(save,16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text,16);
+                                textBox2_Process.Text += "";
+                                save = (first /= second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
+                        case "dec":
+                            if (op == '-')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first -= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '*')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first *= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first /= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
+                        case "bin":
+                            if (op == '-')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first -= second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '*')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first *= second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first /= second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
                     }
                 }
 
@@ -371,7 +432,7 @@ namespace Calculator
                     switch (binary)
                     {
                         case "hexa":
-                            second = Convert.ToInt32(textBox2_Process.Text, 16);
+                            second = Convert.ToInt32(textBox2_Process.Text, 16); // 두번째 변수 16진수로 입력 
                             textBox2_Process.Text += "";
                             save = (first += second);
                             textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
@@ -386,6 +447,11 @@ namespace Calculator
                             PrintNumJinsu(save);
                             break;
                         case "bin":
+                            second = Convert.ToInt32(textBox2_Process.Text, 2); // 두번째 변수 2진수로 입력 
+                            textBox2_Process.Text += "";
+                            save = (first += second);
+                            textBox1_Result.Text = Convert.ToString(save, 2);
+                            PrintNumJinsu(save);
                             break;
 
                     }
@@ -431,47 +497,147 @@ namespace Calculator
 
                 else if (op != '-')
                 {
-                    if (op == '+')
+                    switch (binary)
                     {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first += second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        isTwice = true;
-                    }
-
-                    else if (op == '*')
-                    {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first *= second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        isTwice = true;
-                    }
-                    else
-                    {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first /= second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        isTwice = true;
+                        case "hexa":
+                            if (op == '+')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
+                                textBox2_Process.Text += "";
+                                save = (first += second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '*')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
+                                textBox2_Process.Text += "";
+                                save = (first *= second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
+                                textBox2_Process.Text += "";
+                                save = (first /= second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
+                        case "dec":
+                            if (op == '+')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first += second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '*')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first *= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first /= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
+                        case "bin":
+                            if (op == '+')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first += second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '*')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first *= second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first /= second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
                     }
                 }
 
                 else
                 {
-                    second = Convert.ToInt16(textBox2_Process.Text);
-                    textBox2_Process.Text += "";
-                    save = (first -= second);
-                    textBox1_Result.Text = Convert.ToString(save);
-                    isTwice = true;
+                    switch (binary)
+                    {
+                        case "hexa":
+                            second = Convert.ToInt32(textBox2_Process.Text, 16); // 두번째 변수 16진수로 입력 
+                            textBox2_Process.Text += "";
+                            save = (first -= second);
+                            textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                            PrintNumJinsu(save);
+
+                            break;
+                        case "dec":
+                            second = Convert.ToInt16(textBox2_Process.Text);
+                            textBox2_Process.Text += "";
+                            save = (first -= second);
+                            textBox1_Result.Text = Convert.ToString(save);
+                            PrintNumJinsu(save);
+                            break;
+                        case "bin":
+                            second = Convert.ToInt32(textBox2_Process.Text, 2); // 두번째 변수 2진수로 입력 
+                            textBox2_Process.Text += "";
+                            save = (first -= second);
+                            textBox1_Result.Text = Convert.ToString(save, 2);
+                            PrintNumJinsu(save);
+                            break;
+
+                    }
                 }
             }
 
             else
             {
-                first = Convert.ToInt16(textBox2_Process.Text);
-                textBox2_Process.Text = "";
+                switch (binary)
+                {
+                    case "hexa":
+                        first = Convert.ToInt32(textBox2_Process.Text, 16); 
+                        textBox2_Process.Text = "";
+                        break;
+                    case "dec":
+                        first = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text = "";
+                        break;
+                    case "bin":
+                        first = Convert.ToInt32(textBox2_Process.Text, 2);
+                        textBox2_Process.Text = "";
+                        break;
+
+                }
                 isTwice = true;
             }
 
@@ -492,47 +658,148 @@ namespace Calculator
 
                 else if (op != '*')
                 {
-                    if (op == '+')
+                    switch (binary)
                     {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first += second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        isTwice = true;
-                    }
-                    else if (op == '-')
-                    {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first -= second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        isTwice = true;
-                    }
-
-                    else
-                    {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first /= second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        isTwice = true;
+                        case "hexa":
+                            if (op == '+')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
+                                textBox2_Process.Text += "";
+                                save = (first += second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '-')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
+                                textBox2_Process.Text += "";
+                                save = (first -= second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
+                                textBox2_Process.Text += "";
+                                save = (first /= second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
+                        case "dec":
+                            if (op == '+')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first += second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '-')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first -= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first /= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
+                        case "bin":
+                            if (op == '+')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first += second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '-')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first -= second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first /= second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
                     }
                 }
 
                 else
                 {
-                    second = Convert.ToInt16(textBox2_Process.Text);
-                    textBox2_Process.Text += "";
-                    save = (first *= second);
-                    textBox1_Result.Text = Convert.ToString(save);
+                    switch (binary)
+                    {
+                        case "hexa":
+                            second = Convert.ToInt32(textBox2_Process.Text, 16); // 두번째 변수 16진수로 입력 
+                            textBox2_Process.Text += "";
+                            save = (first *= second);
+                            textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                            PrintNumJinsu(save);
+
+                            break;
+                        case "dec":
+                            second = Convert.ToInt16(textBox2_Process.Text);
+                            textBox2_Process.Text += "";
+                            save = (first *= second);
+                            textBox1_Result.Text = Convert.ToString(save);
+                            PrintNumJinsu(save);
+                            break;
+                        case "bin":
+                            second = Convert.ToInt32(textBox2_Process.Text, 2); // 두번째 변수 2진수로 입력 
+                            textBox2_Process.Text += "";
+                            save = (first *= second);
+                            textBox1_Result.Text = Convert.ToString(save, 2);
+                            PrintNumJinsu(save);
+                            break;
+
+                    }
                     isTwice = true;
                 }
             }
 
             else
             {
-                first = Convert.ToInt16(textBox2_Process.Text);
-                textBox2_Process.Text = "";
+                switch (binary)
+                {
+                    case "hexa":
+                        first = Convert.ToInt32(textBox2_Process.Text, 16); // 16진수 10진수로 변환
+                        textBox2_Process.Text = "";
+                        break;
+                    case "dec":
+                        first = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text = "";
+                        break;
+                    case "bin":
+                        first = Convert.ToInt32(textBox2_Process.Text, 2); // 16진수 10진수로 변환
+                        textBox2_Process.Text = "";
+                        break;
+
+                }
                 isTwice = true;
             }
 
@@ -553,47 +820,148 @@ namespace Calculator
 
                 else if (op != '/')
                 {
-                    if (op == '+')
+                    switch (binary)
                     {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first += second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        isTwice = true;
-                    }
-                    else if (op == '-')
-                    {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first -= second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        isTwice = true;
-                    }
-
-                    else
-                    {
-                        second = Convert.ToInt16(textBox2_Process.Text);
-                        textBox2_Process.Text += "";
-                        save = (first *= second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        isTwice = true;
+                        case "hexa":
+                            if (op == '+')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
+                                textBox2_Process.Text += "";
+                                save = (first += second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '-')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
+                                textBox2_Process.Text += "";
+                                save = (first -= second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 16);
+                                textBox2_Process.Text += "";
+                                save = (first *= second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
+                        case "dec":
+                            if (op == '+')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first += second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '-')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first -= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text);
+                                textBox2_Process.Text += "";
+                                save = (first *= second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
+                        case "bin":
+                            if (op == '+')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first += second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else if (op == '-')
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first -= second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            else
+                            {
+                                second = Convert.ToInt16(textBox2_Process.Text, 2);
+                                textBox2_Process.Text += "";
+                                save = (first *= second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                isTwice = true;
+                            }
+                            break;
                     }
                 }
 
                 else
                 {
-                    second = Convert.ToInt16(textBox2_Process.Text);
-                    textBox2_Process.Text += "";
-                    save = (first /= second);
-                    textBox1_Result.Text = Convert.ToString(save);
+                    switch (binary)
+                    {
+                        case "hexa":
+                            second = Convert.ToInt32(textBox2_Process.Text, 16); 
+                            textBox2_Process.Text += "";
+                            save = (first /= second);
+                            textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                            PrintNumJinsu(save);
+
+                            break;
+                        case "dec":
+                            second = Convert.ToInt16(textBox2_Process.Text);
+                            textBox2_Process.Text += "";
+                            save = (first /= second);
+                            textBox1_Result.Text = Convert.ToString(save);
+                            PrintNumJinsu(save);
+                            break;
+                        case "bin":
+                            second = Convert.ToInt32(textBox2_Process.Text, 2); 
+                            textBox2_Process.Text += "";
+                            save = (first /= second);
+                            textBox1_Result.Text = Convert.ToString(save, 2);
+                            PrintNumJinsu(save);
+                            break;
+
+                    }
                     isTwice = true;
                 }
             }
 
             else
             {
-                first = Convert.ToInt16(textBox2_Process.Text);
-                textBox2_Process.Text = "";
+                switch (binary)
+                {
+                    case "hexa":
+                        first = Convert.ToInt32(textBox2_Process.Text, 16); 
+                        textBox2_Process.Text = "";
+                        break;
+                    case "dec":
+                        first = Convert.ToInt16(textBox2_Process.Text);
+                        textBox2_Process.Text = "";
+                        break;
+                    case "bin":
+                        first = Convert.ToInt32(textBox2_Process.Text, 2); 
+                        textBox2_Process.Text = "";
+                        break;
+
+                }
                 isTwice = true;
             }
 
@@ -605,61 +973,185 @@ namespace Calculator
         {
             if (textBox2_Process.Text == "")
             {
-                switch (op)
+                switch (binary)
                 {
-                    case '+':
-                        save += second;
-                        textBox1_Result.Text = Convert.ToString(save);
-                        PrintNumJinsu(save);
+                    case "hexa":
+                        switch (op)
+                        {
+                            case '+':
+                                save += second;
+                                textBox1_Result.Text = Convert.ToString(save,16).ToUpper();
+                                PrintNumJinsu(save);
 
+                                break;
+                            case '-':
+                                save -= second;
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                break;
+                            case '*':
+                                save *= second;
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                break;
+                            case '/':
+                                save /= second;
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                break;
+                        }
                         break;
-                    case '-':
-                        save -= second;
-                        textBox1_Result.Text = Convert.ToString(save);
-                        PrintNumJinsu(save);
+                    case "dec":
+                        switch (op)
+                        {
+                            case '+':
+                                save += second;
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+
+                                break;
+                            case '-':
+                                save -= second;
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                break;
+                            case '*':
+                                save *= second;
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                break;
+                            case '/':
+                                save /= second;
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                break;
+                        }
                         break;
-                    case '*':
-                        save *= second;
-                        textBox1_Result.Text = Convert.ToString(save);
-                        PrintNumJinsu(save);
-                        break;
-                    case '/':
-                        save /= second;
-                        textBox1_Result.Text = Convert.ToString(save);
-                        PrintNumJinsu(save);
+                    case "bin":
+                        switch (op)
+                        {
+                            case '+':
+                                save += second;
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+
+                                break;
+                            case '-':
+                                save -= second;
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                break;
+                            case '*':
+                                save *= second;
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                break;
+                            case '/':
+                                save /= second;
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                break;
+                        }
                         break;
                 }
             }
 
             else
             {
-                second = Convert.ToInt16(textBox2_Process.Text);
-                switch (op)
+                switch (binary)
                 {
-                    case '+':
-                        textBox2_Process.Text = "";
-                        save = (first + second);  // save = (first += second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        PrintNumJinsu(save);
-                        break;
+                    case "hexa":
+                        second = Convert.ToInt16(textBox2_Process.Text,16);
+                        switch (op)
+                        {
+                            case '+':
+                                textBox2_Process.Text = "";
+                                save = (first + second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                break;
 
-                    case '-':
-                        textBox2_Process.Text = "";
-                        save = (first - second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        PrintNumJinsu(save);
+                            case '-':
+                                textBox2_Process.Text = "";
+                                save = (first - second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                break;
+                            case '*':
+                                textBox2_Process.Text = "";
+                                save = (first * second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                break;
+                            case '/':
+                                textBox2_Process.Text = "";
+                                save = (first / second);
+                                textBox1_Result.Text = Convert.ToString(save, 16).ToUpper();
+                                PrintNumJinsu(save);
+                                break;
+                        }
                         break;
-                    case '*':
-                        textBox2_Process.Text = "";
-                        save = (first * second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        PrintNumJinsu(save);
+                    case "dec":
+                        second = Convert.ToInt16(textBox2_Process.Text);
+                        switch (op)
+                        {
+                            case '+':
+                                textBox2_Process.Text = "";
+                                save = (first + second);  
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                break;
+
+                            case '-':
+                                textBox2_Process.Text = "";
+                                save = (first - second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                break;
+                            case '*':
+                                textBox2_Process.Text = "";
+                                save = (first * second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                break;
+                            case '/':
+                                textBox2_Process.Text = "";
+                                save = (first / second);
+                                textBox1_Result.Text = Convert.ToString(save);
+                                PrintNumJinsu(save);
+                                break;
+                        }
                         break;
-                    case '/':
-                        textBox2_Process.Text = "";
-                        save = (first / second);
-                        textBox1_Result.Text = Convert.ToString(save);
-                        PrintNumJinsu(save);
+                    case "bin":
+                        second = Convert.ToInt16(textBox2_Process.Text, 2);
+                        switch (op)
+                        {
+                            case '+':
+                                textBox2_Process.Text = "";
+                                save = (first + second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                break;
+
+                            case '-':
+                                textBox2_Process.Text = "";
+                                save = (first - second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                break;
+                            case '*':
+                                textBox2_Process.Text = "";
+                                save = (first * second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                break;
+                            case '/':
+                                textBox2_Process.Text = "";
+                                save = (first / second);
+                                textBox1_Result.Text = Convert.ToString(save, 2);
+                                PrintNumJinsu(save);
+                                break;
+                        }
                         break;
                 }
             }
@@ -687,6 +1179,10 @@ namespace Calculator
             if (radioButton_hex.Checked == true)
             {
                 binary = "hexa";
+                //for(int i = 0; i <= 9; i++)
+                //{
+                //    btn_[i].Enabled = true;
+                //}
                 btn_0.Enabled = true;
                 btn_1.Enabled = true;
                 btn_2.Enabled = true;

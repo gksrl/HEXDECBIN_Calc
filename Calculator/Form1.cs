@@ -105,7 +105,7 @@ namespace Calculator
         private void btn_plus_Click(object sender, EventArgs e)
         {
 
-            if(isTwice == true)
+            if(isTwice == true) // X+Y= +
             {
                 if (textBox2_Process.Text == "")
                 {
